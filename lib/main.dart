@@ -49,7 +49,7 @@ class CustomListView extends StatelessWidget {
     );
   }
 
-  Widget createViewItem(AudioFeeds spacecraft, BuildContext context) {
+  Widget createViewItem(AudioFeeds audioFeed, BuildContext context) {
     return new ListTile(
         title: new Card(
           elevation: 5.0,
@@ -60,13 +60,13 @@ class CustomListView extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 Padding(
-                  child: Image.network('$hostURL${spacecraft.imageUrl}'),
+                  child: Image.network('$hostURL${audioFeed.imageUrl}'),
                   padding: EdgeInsets.only(bottom: 8.0),
                 ),
                 Row(children: <Widget>[
                   Padding(
                       child: Text(
-                        spacecraft.title,
+                        audioFeed.title,
                         style: new TextStyle(fontWeight: FontWeight.bold),
                         textAlign: TextAlign.right,
                       ),
@@ -74,7 +74,7 @@ class CustomListView extends StatelessWidget {
                   Text(" | "),
                   Padding(
                       child: Text(
-                        spacecraft.propellant,
+                        audioFeed.propellant,
                         style: new TextStyle(fontStyle: FontStyle.italic),
                         textAlign: TextAlign.right,
                       ),
@@ -90,7 +90,7 @@ class CustomListView extends StatelessWidget {
           //screen with a platform-adaptive transition.
           var route = new MaterialPageRoute(
             builder: (BuildContext context) =>
-                new SecondScreen(value: spacecraft),
+                new SecondScreen(value: audioFeed),
           );
           //A Navigator is a widget that manages a set of child widgets with
           //stack discipline.It allows us navigate pages.
@@ -229,7 +229,7 @@ class _SecondScreenState extends State<SecondScreen> {
                   var route = new MaterialPageRoute(
                     builder: (BuildContext context) => new AudioApp(),
                   );
-                  // new AudioApp(value: spacecraft),
+                  // new AudioApp(value: audioFeed),
                   //A Navigator is a widget that manages a set of child widgets with
                   //stack discipline.It allows us navigate pages.
                   Navigator.of(context).push(route);
